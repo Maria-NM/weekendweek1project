@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+  <h1>Rock Paper Scissors Game</h1>
+  <p>Player 1: <input type="text" id="player1Choice" placeholder="Enter rock, paper, or scissors"></p>
+  <p>Player 2: <input type="text" id="player2Choice" placeholder="Enter rock, paper, or scissors"></p>
+  <button onclick="playGame()">Play</button>
+  <p id="result"> </p>
+
+  <script>
+    function determineWinner(player1Choice, player2Choice) {
+      if (player1Choice === player2Choice) {
+        return "It's a tie!";
+      } else if (
+        (player1Choice === "rock" && player2Choice === "scissors") ||
+        (player1Choice === "paper" && player2Choice === "rock") ||
+        (player1Choice === "scissors" && player2Choice === "paper")
+      ) {
+        return "Player 1 wins!";
+      } else {
+        return "Player 2 wins!";
+      }
+    }
+
+    function playGame() {
+      const player1Choice = document.getElementById("player1Choice").value.trim().toLowerCase();
+      const player2Choice = document.getElementById("player2Choice").value.trim().toLowerCase();
+
+      const choices = ["rock", "paper", "scissors"];
+
+      // Check if the choices are valid
+      if (!choices.includes(player1Choice) || !choices.includes(player2Choice)) {
+        alert("Invalid choices. Please choose either rock, paper, or scissors.");
+        return;
+      }
+
+      const result = determineWinner(player1Choice, player2Choice);
+      document.getElementById("result").innerText = result;
+    }
+  </script>
+</body>
+</html>
+
+</body>
+</html>
